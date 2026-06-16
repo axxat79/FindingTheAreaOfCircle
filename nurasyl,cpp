@@ -1,16 +1,19 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <locale>
 using namespace std;
 
 struct Student {
-    int id;
-    string name;
-    int age;
-    double grade;
+    int id = 0;
+    string name = "";
+    int age = 0;
+    double grade = 0.0;
 };
 
 int main() {
+    setlocale(LC_ALL, "Russian");
+
     vector<Student> students;
     int n;
 
@@ -21,32 +24,28 @@ int main() {
         Student s;
         s.id = i + 1;
         cout << "\nСтудент " << i + 1 << ":\n";
-        cout << "Имя: ";    cin >> s.name;
+        cout << "Имя: ";     cin >> s.name;
         cout << "Возраст: "; cin >> s.age;
-        cout << "Балл: ";   cin >> s.grade;
+        cout << "Балл: ";    cin >> s.grade;
         students.push_back(s);
     }
 
     cout << "\nСписок студентов:\n";
     for (const auto& s : students) {
-        cout << "ID: "            << s.id
-             << ", Имя: "         << s.name
-             << ", Возраст: "     << s.age
-             << ", Средний балл: "<< s.grade
-             << endl;
+        cout << "ID: " << s.id
+            << ", Имя: " << s.name
+            << ", Возраст: " << s.age
+            << ", Средний балл: " << s.grade
+            << endl;
     }
 
-    return 0;
-}
+    cout << "\n=== Тесты ===\n";
 
-
-    // Тест 1: список не пустой?
     if (students.size() > 0)
         cout << "[PASS] Студенты есть в базе\n";
     else
         cout << "[FAIL] База пустая!\n";
 
-    // Тест 2: баллы правильные (от 1 до 5)?
     bool ok = true;
     for (auto& s : students)
         if (s.grade < 1 || s.grade > 5) ok = false;
