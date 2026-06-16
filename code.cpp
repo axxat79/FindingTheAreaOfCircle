@@ -7,6 +7,8 @@ int main(){
 	cout << "Radius engiz: ";
 	cin >> r;
 	double s = area(r);
+	double l = Line(r);
 	cout << "Shenber audany: " << s;
+	cout << "Shenber uzindigi: " << l;
 	return 0;
 }
