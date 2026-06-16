@@ -3,5 +3,5 @@
 using namespace std;
 
 double area(int a);
-
+double Line(double R);
 #endif
